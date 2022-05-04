@@ -272,7 +272,7 @@ puts "========"
 puts ""
 
 for role in Role.all
-    puts "#{role["movie_id"]}"
+    puts "#{role["movie_id"]} #{role["actor_id"]} #{role["character_name"]}"
 end
 
 # Query the cast data and loop through the results to display the cast output for each movie.
