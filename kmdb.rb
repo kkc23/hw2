@@ -81,26 +81,27 @@ Actor.destroy_all
 
 warner_bros = Studio.new
 warner_bros["studio_name"] = "Warner Bros."
+warner_bros.save
 
 batman_begins = Movie.new
 batman_begins["title"] = "Batman Begins"
 batman_begins["year"] = 2005
 batman_begins["rating"] = "PG-13"
-batman_begins["studio"] = Studio[0]
+batman_begins["studio"] = warner_bros["studio_name"]
 batman_begins.save
 
 dark_knight = Movie.new
 dark_knight["title"] = "The Dark Knight"
 dark_knight["year"] = 2008
 dark_knight["rating"] = "PG-13"
-dark_knight["studio"] = Studio[0]
+dark_knight["studio"] = warner_bros["studio_name"]
 dark_knight.save
 
 dark_knight_r = Movie.new
 dark_knight_r["title"] = "The Dark Knight Rises"
 dark_knight_r["year"] = 2012
 dark_knight_r["rating"] = "PG-13"
-dark_knight_r["studio"] = Studio[0]
+dark_knight_r["studio"] = warner_bros["studio_name"]
 dark_knight_r.save
 
 actor = Actor.new
@@ -253,22 +254,26 @@ role["actor_id"] = hathaway["id"]
 role["character_name"] = "Selina Kyle"
 role.save
 
-# movies = Movies.new
-# movies["title"]
-
 # Prints a header for the movies output
 puts "Movies"
 puts "======"
 puts ""
 
+for movie in Movie.all
+    puts "#{movie["title"]} #{movie["year"]} #{movie["rating"]} #{movie["studio"]}"
+end
+
 # Query the movies data and loop through the results to display the movies output.
-# TODO!
 
 # Prints a header for the cast output
 puts ""
 puts "Top Cast"
 puts "========"
 puts ""
+
+for role in Role.all
+    puts "#{role["movie_id"]}"
+end
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
