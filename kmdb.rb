@@ -275,5 +275,9 @@ for role in Role.all
     puts "#{role["movie_id"]} #{role["actor_id"]} #{role["character_name"]}"
 end
 
+
+# batman_begins = Movie.find_by({"id" => 25})
+# puts batman_begins.inspect
+
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
